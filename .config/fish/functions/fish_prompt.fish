@@ -43,7 +43,8 @@ function fish_prompt
 
   __fish_git_prompt " %s"
 
-  _print_in_color "\n❯ " (_prompt_color_for_status $last_status)
+  _print_in_color "\n❯ " blue
+#  _print_in_color "\n❯ " (_prompt_color_for_status $last_status)
 end
 
 # function fish_prompt --description 'Write out the prompt'
