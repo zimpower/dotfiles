@@ -1,0 +1,23 @@
+alias ..="cd .."
+alias ...="cd ../.."
+alias -- -='cd -'   # creates a '-' command that goes up one directory
+
+alias ls='ls -GFha'
+alias refresh='source $HOME/.profile'
+alias hi='history'
+
+alias path='echo -e ${PATH//:/\\n}'
+mcd () { mkdir -p "$1" && cd "$1"; }        # mcd: Makes new Dir and jumps inside
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+
+#   spotlight: Search for a file using MacOS Spotlight's metadata
+#   -----------------------------------------------------------
+spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
+
+# Docker
+alias docker-compose='dc'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
