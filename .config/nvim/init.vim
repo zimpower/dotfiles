@@ -40,8 +40,6 @@ set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 " Close nvim if NERDTree last window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme='neovim'
 set termguicolors
 colorscheme neodark
 
@@ -90,12 +88,12 @@ match ExtraWhitespace /\s\+$\|\t/
 " Searching settings
 set ignorecase          " Make searching case insensitive
 set smartcase           " ... unless the query has capital letters.
-set incsearch			   " incremental search
+set incsearch           " incremental search
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 
 " Use ESCAPE to clear the highlighting of :set hlsearch.
 nnoremap <esc> :noh<return><esc>
-" Press i to enter insert mode, and ii to exit.
+" Press i to enter insert mode, and jj to exit.
 :imap jj <Esc>
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
