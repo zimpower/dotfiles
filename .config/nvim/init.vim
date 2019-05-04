@@ -1,8 +1,20 @@
+" ============================================================================
+" Vim-plug initialization
+"
 
-if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-    echo "Downloading junegunn/vim-plug to manage plugins..."
+let vim_plug_just_installed = 0
+let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
+if !filereadable(vim_plug_path)
+    echo "Installing Vim-plug..."
+    echo ""
     silent !mkdir -p ~/.config/nvim/autoload/
     silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
+    let vim_plug_just_installed = 1
+endif
+
+" manually load vim-plug the first time
+if vim_plug_just_installed
+    :execute 'source '.fnameescape(vim_plug_path)
 endif
 
 
@@ -16,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'KeitaNakamura/neodark.vim'
@@ -23,18 +36,42 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi' " autocompletion source
 Plug 'christoomey/vim-tmux-navigator'
+if has('python')
+  " YAPF formatter for Python
+  Plug 'pignacio/vim-yapf-format'
+endif
 call plug#end()
 
-filetype plugin indent on
+
+" ============================================================================
+" Install plugins the first time vim runs
+"
+if vim_plug_just_installed
+  echo "Installing Bundles, please ignore key map error messages"
+  :PlugInstall
+endif
+
+"  no vi-compatible
+set nocompatible
+
+" allow plugins by file type (required for plugins!)
+filetype plugin on
+filetype indent on
 syntax on
 
-" Tab indent, settings
+" tabs and spaces handling
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-" Python settings
-set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
+set smarttab
+
+" tab length exceptions on some file types
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
+
+" Automatically delete all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " NERDTree setup
 " Close nvim if NERDTree last window left
