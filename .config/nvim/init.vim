@@ -95,6 +95,11 @@ map <C-n> :NERDTreeToggle<CR>
 " Map FZF to Ctrl-p
 map <C-p> :FZF<CR>
 
+" Spelling
+"
+set spelllang=en
+set spellfile=$HOME/.config/nvim/spell/en-utf-8.add
+
 
 " Navigation
 nmap <silent> <c-k> :wincmd k<CR>
