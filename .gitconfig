@@ -1,0 +1,14 @@
+[core]
+	editor = nvim
+[user]
+	name = Simon Hards
+	email = simon.hards@gmail.com
+[credential]
+	helper = osxkeychain
+[color]
+	ui = true
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
