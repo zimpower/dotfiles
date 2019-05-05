@@ -12,3 +12,4 @@
 	ci = commit
 	br = branch
 	co = checkout
+	unstage = reset HEAD --
