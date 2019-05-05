@@ -80,6 +80,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set termguicolors
 colorscheme neodark
 
+" Setup buffer change
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
 " Line Number setup
 set number relativenumber
 augroup numbertoggle
