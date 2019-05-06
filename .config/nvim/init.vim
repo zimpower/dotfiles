@@ -53,6 +53,7 @@ endif
 
 "  no vi-compatible
 set nocompatible
+let g:pymode_python = 'python3'
 
 " allow plugins by file type (required for plugins!)
 filetype plugin on
